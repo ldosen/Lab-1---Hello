@@ -2,43 +2,49 @@ package hw;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class FizzBuzzTest {
 
-    @Test(expected = NegativeArraySizeException.class)
+    @Test
     public void testFizzBuzzNegativeTen() {
-        FizzBuzz.fizzBuzz("-10");
+        assertNull(null, FizzBuzz.fizzBuzz("-10"));
     }
 
-    @Test(expected = NegativeArraySizeException.class)
+    @Test
     public void testFizzBuzzNegativeOne() {
-        FizzBuzz.fizzBuzz("-1");
+        assertNull(null, FizzBuzz.fizzBuzz("-1"));
     }
 
     @Test
     public void testFizzBussZero(){
         final String[] zero = {};
-        assertArrayEquals(zero, FizzBuzz.fizzBuzz("0"));
+        List zeroList = Arrays.asList(zero);
+        assertEquals(zeroList, FizzBuzz.fizzBuzz("0"));
     }
 
     @Test
     public void testFizzBuzzOne(){
         final String[] one = {"1"};
-        assertArrayEquals(one, FizzBuzz.fizzBuzz("1"));
+        List oneList = Arrays.asList(one);
+        assertEquals(oneList, FizzBuzz.fizzBuzz("1"));
     }
 
     @Test
     public void testFizzBuzzSeven(){
         final String[] seven = {"1", "2", "fizz", "4", "buzz", "fizz", "7"};
-        assertArrayEquals(seven, FizzBuzz.fizzBuzz("7"));
+        List sevenList = Arrays.asList(seven);
+        assertEquals(sevenList, FizzBuzz.fizzBuzz("7"));
     }
 
     @Test
     public void testFizzBuzzSeventeen(){
         final String[] seventeen = {"1", "2", "fizz", "4", "buzz", "fizz", "7", "8", "fizz", "buzz", "11", "fizz", "13", "14", "fizz buzz", "16", "17"};
-        assertArrayEquals(seventeen, FizzBuzz.fizzBuzz("17"));
+        List seventeenList = Arrays.asList(seventeen);
+        assertEquals(seventeenList, FizzBuzz.fizzBuzz("17"));
     }
 }

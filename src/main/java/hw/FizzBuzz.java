@@ -1,16 +1,19 @@
 package hw;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FizzBuzz {
     private static int max;
 
     /**
-     * Returns an array of Strings in the Fizz Buzz sequence.
-     * The String arg is entered on the command line and must be a natural number.
+     * Returns a List of Strings in the Fizz Buzz sequence.
+     * The String arg is entered as a command line argument and must be a natural number.
      * @param arg a String entered on the command  line
-     * @return an array of Strings in the Fizz Buzz sequence
+     * @return a List of Strings in the Fizz Buzz sequence
      */
 
-    public static String[] fizzBuzz(String arg) {
+    public static List<String> fizzBuzz(String arg) {
         if (arg.length() > 0) {
             try {
                 max = Integer.parseInt(arg);
@@ -19,31 +22,28 @@ public class FizzBuzz {
                 System.exit(1);
             }
         }
-        String[] fizzBuzzArray = null;
-        try {
-            fizzBuzzArray = new String[max];
-        } catch (NegativeArraySizeException e) {
-           throw new NegativeArraySizeException();
+        List<String> fizzBuzzList = null;
+        if (max < 0) {
+            System.err.println("The argument must be a natural number");
+            return null;
+        } else {
+            fizzBuzzList = new ArrayList<>();
         }
-        try {
-            for (int i = 1; i <= max; i++) {
-                if ((i % 3 == 0) && (i % 5 == 0)) {
-                    fizzBuzzArray[i - 1] = "fizz buzz";
-                } else if (i % 3 == 0) {
-                    fizzBuzzArray[i - 1] = "fizz";
-                } else if (i % 5 == 0) {
-                    fizzBuzzArray[i - 1] = "buzz";
-                } else {
-                    fizzBuzzArray[i - 1] = String.valueOf(i);
-                }
+        for (int i = 1; i <= max; i++) {
+            if ((i % 3 == 0) && (i % 5 == 0)) {
+                fizzBuzzList.add("fizz buzz");
+            } else if (i % 3 == 0) {
+                fizzBuzzList.add("fizz");
+            } else if (i % 5 == 0) {
+                fizzBuzzList.add("buzz");
+            } else {
+                fizzBuzzList.add(String.valueOf(i));
             }
-        } catch (NullPointerException e) {
-            System.err.println("fizzBuzzArray does not exist");
-            System.exit(1);
         }
-        return fizzBuzzArray;
+        return fizzBuzzList;
     }
 }
+
 
 
 
